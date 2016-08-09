@@ -12,6 +12,7 @@ namespace Sample
 		static void Main(string[] args)
 		{
 			var convertText = new ConvertText();
+			convertText.SetEncoding(Encoding.UTF8);
 			if (convertText.Open("../../App.config", "sample.txt"))
 			{
 				while (true)

@@ -15,30 +15,40 @@ namespace ConvertTextBase
 		/// <summary>
 		/// Source File Encording
 		/// </summary>
-		private Encoding srcEncording;
+		public Encoding SrcEncording;
 
 		/// <summary>
 		/// Destination File Encording
 		/// </summary>
-		private Encoding destEncording;
+		public Encoding DestEncording;
 
 		/// <summary>
 		/// Source File Read Object
 		/// </summary>
-		private StreamReader srcReader = null;
+		protected StreamReader srcReader = null;
 
 		/// <summary>
 		/// Destination File Write Object
 		/// </summary>
-		private StreamWriter destWriter = null;
+		protected StreamWriter destWriter = null;
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		public ConvertText()
 		{
-			srcEncording = Encoding.UTF8;
-			destEncording = Encoding.UTF8;
+			SrcEncording = Encoding.UTF8;
+			DestEncording = Encoding.UTF8;
+		}
+
+		/// <summary>
+		/// Set Source File And Destination File Encodings
+		/// </summary>
+		/// <param name="encoding">Encoding</param>
+		public void SetEncoding(Encoding encoding)
+		{
+			SrcEncording = encoding;
+			DestEncording = encoding;
 		}
 
 		/// <summary>
@@ -51,8 +61,8 @@ namespace ConvertTextBase
 		{
 			try
 			{
-				srcReader = new StreamReader(srcFilePath, srcEncording);
-				destWriter = new StreamWriter(destFilePath, false, destEncording);
+				srcReader = new StreamReader(srcFilePath, SrcEncording);
+				destWriter = new StreamWriter(destFilePath, false, DestEncording);
 				return true;
 			}
 			catch
