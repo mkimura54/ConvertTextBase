@@ -56,13 +56,14 @@ namespace ConvertTextBase
 		/// </summary>
 		/// <param name="srcFilePath">Source File Path</param>
 		/// <param name="destFilePath">Destination File Path</param>
+		/// <param name="isOverride">Is Delete And Create Destination File?</param>
 		/// <returns>Result</returns>
-		public bool Open(string srcFilePath, string destFilePath)
+		public bool Open(string srcFilePath, string destFilePath, bool isOverride = true)
 		{
 			try
 			{
 				srcReader = new StreamReader(srcFilePath, SrcEncording);
-				destWriter = new StreamWriter(destFilePath, false, DestEncording);
+				destWriter = new StreamWriter(destFilePath, !isOverride, DestEncording);
 				return true;
 			}
 			catch
